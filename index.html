@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<!--
+These files represent a typical HTML5 and up to date web site. When a user visits the website, it loads index.html.
+Index.html then loads the files it needs, including custom.js. Custom.js will talk to info.php via an Asynchronous
+Javascript And XML (AJAX) call, and info.php will return the data back from the database. Custom.js then changes
+index.html to show the data that was loaded. You can think of these three files as a general example of
+Model-View-Controller (http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller), which is a common way of
+structuring an application. Index.html would be the view, custom.js would be the controller, and info.php would be the
+model. An additional file, Fake.php, has been included to allow for easy population of the database with fake data.
+NOTE: FAKE.PHP WILL ERASE YOUR TABLE BEFORE REPOPULATING IT!
+-->
+	<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--Enables mobile rendering for Bootstrap-->
+		<title>Credit Information</title>
+        <!--
+        These stylesheets are for a CSS framework called Twitter Bootstrap. As you can see, I'm referencing them from
+        another web site; web sites that provide files for the public to use are called Content Delivery Networks (CDN).
+        CDNs are helpful because they allow you to use someone else's bandwidth to load styling and Javascript.
+        Additionally, CDNs are helpful because if the CDN is a big company (like Google or in the case below, Microsoft),
+        chances are that your visitor has a cached version of this file from visiting that company's web site. This results
+        in a FASTER load time for your visitor as they visit YOUR web site. Obviously, the disadvantages of CDNs lie
+        in the fact that they're remote: you have no control over what file they place at that location nor do you have
+        a guarantee that the file will exist at that location later today. Best to choose trusted CDNs and make sure to
+        keep your web site up to date.
+        -->
+        <link rel="stylesheet" type="text/css" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!--
+        This web site uses Javascript extensively. If the user has a browser which has JS disabled or doesn't support JS,
+        then we show that user an error message and give them instructions on how to enable it using the noscript tag.
+        -->
+        <noscript>
+            <div class="alert alert-danger text-center" role="alert">
+                <strong>You need Javascript for this web site.</strong>
+                These are the <a href="http://www.enable-javascript.com/" target="_blank">instructions for enabling Javascript.</a>
+            </div>
+        </noscript>
+	</head>
+	<body>
+    <!--
+    All of these extra div elements and classes you see are a result of Bootstrap. The following links are for your
+    information only:
+    Bootstrap CSS Documentation: http://getbootstrap.com/css
+    Bootstrap Component Documentation: http://getbootstrap.com/components
+    -->
+		<div class="container">
+			<div class="row">
+				<div class=col-xs-12">
+					<div class="row">
+                        <h1 class="text-center">Credit Information</h1>
+						<table id="myTable" class="table table-striped table-hover table-bordered table-responsive">
+						<tr>
+							<th>Creditor</th>
+							<th>Date</th>
+							<th>Credit Score</th>
+							<th>State</th>
+							<th>Income</th>
+							<th>Approval</th>
+							<th>Credit Line</th>
+							<th>Interest</th>
+							<th>Comment</th>
+						</tr>
+						<tbody>
+                        <!--
+                        We will show a default row in case the user has Javascript turned off or loading the data fails.
+                        We will remove this row if the data is loaded successfully and replace it with the data.
+                        -->
+                            <tr>
+                                <td colspan="10" class="text-center">Sorry, there's no data here!</td>
+                            </tr>
+						</tbody>
+					</table>
+					</div>
+                    <!--
+                    Some fancy pagination options. This could just as easily be links instead.
+                    -->
+					<div class="row text-center">
+						<ul class="pagination pagination-lg">
+                            <li id="prevLiItem"><a href="#" id="prevPage">&laquo;</a></li>
+                            <li class="active"><span id="pageNum">1</span></li>
+                            <li id="nextLiItem"><a href="#" id="nextPage" class="">&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <!--
+        A fancy modal to show errors in.
+        -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Oops...</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span id="modalMessage">
+                            An error occurred! Please refresh the page or contact the administrator.
+                        </span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        Now I'm loading more stuff from the CDNs (I'm using both the Microsoft CDN and the Google CDN here). I'm loading
+        a Javascript library called jQuery which is very popular among web developers. It makes doing Javascript stuff
+        much easier. You can see some jQuery code in the custom.js file which I also load here.
+        jQuery Documentation: http://api.jquery.com/
+        -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js"></script>
+        <script src="resources/js/custom.js"></script>
+	</body>
+</html>
